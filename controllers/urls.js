@@ -11,7 +11,7 @@ async function getAll (req, res) {
 
 async function addUrl (req, res) {
     try {
-        const urls = await Url.urlShortner(req.body.shortUrl, req.body.longUrl)
+        const urls = await Url.urlShortner(req.body.shorturl, req.body.longurl)
         res.status(200).json(urls)
     } catch (err) {
         res.status(500).send({ err })
