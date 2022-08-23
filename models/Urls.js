@@ -3,8 +3,8 @@ const db = require('../dbconfig');
 class Url {
     constructor(data){
         this.id = data.id
-        this.shortUrl = data.shortUrl
-        this.longUrl = data.longUrl
+        this.shorturl = data.shorturl
+        this.longurl = data.longurl
     }
 
     static get all(){
@@ -18,10 +18,10 @@ class Url {
             }
         })
     }
-    static urlShortner(shortUrl, longUrl) {
+    static urlShortner(shorturl, longurl) {
         return new Promise (async (res, req) => {
             try {
-                let addUrl = await db.query(`INSERT INTO urls (shortUrl, longUrl) VALUES ($1, $2) RETURNING *;`, [shortUrl, longUrl] )
+                let addUrl = await db.query(`INSERT INTO urls (shorturl, longurl) VALUES ($1, $2) RETURNING *;`, [shorturl, longurl] )
                 let resolveUrl = new Url(addUrl.rows[0])
                 res(resolveUrl)
             } catch (err) {
